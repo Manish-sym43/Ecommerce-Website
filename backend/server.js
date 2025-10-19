@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const productRoutes = require("./routes/productRoutes");
 
 // Load environment variables
 dotenv.config();
@@ -24,6 +25,9 @@ app.use(express.json()); //for handling JSON body
 app.get("/", (req, res) => {
     res.send("Hello, I am Root");
 });
+
+// Product API Routes
+app.use("/api/products", productRoutes);
 
 // Server listen
 app.listen(PORT, () => {
